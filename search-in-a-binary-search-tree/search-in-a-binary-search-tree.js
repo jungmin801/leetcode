@@ -15,15 +15,18 @@ var searchBST = function(root, val) {
     let currentNode = root;
     if(!currentNode || currentNode.length === 0) return null;
     
-    while(currentNode !== null){
-        if(currentNode.val === val) break;
-        if(currentNode.val > val) {
-            currentNode = currentNode.left
-        } else {
-            currentNode = currentNode.right;
+    function recursive (node) {
+        if(!node) return null;
+        if(node.val === val) return node;
+        if(node.val > val) {
+            return recursive(node.left);
+        }else {
+            return recursive(node.right);
         }
     }
     
-    return currentNode;
+    return recursive(currentNode);
     
 };
+
+
